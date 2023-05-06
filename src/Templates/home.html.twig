@@ -1,0 +1,37 @@
+<h2>Короткие ссылки</h2>
+
+<table>
+    <thead>
+    <tr>
+        <th>Ссылка</th>
+        <th>Токен</th>
+        <th>Дата создания</th>
+        <th></th>
+    </tr>
+    </thead>
+    <tbody>
+    {% for link in links %}
+        <tr>
+            <td>
+                <a href="{{ path('redirect', {token: link.id}) }}">{{ link.name }}</a>
+            </td>
+            <td>{{ link.id }}</td>
+            <td>{{ link.date }}</td>
+            <td>
+                <form action="{{ path('action') }}" method="post">
+                    <input type="hidden" name="action" value="delete">
+                    <input type="hidden" name="id" value="{{ link.id }}">
+                    <button type="submit">Удалить</button>
+                </form>
+            </td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
+<h2>Добавление ссылки</h2>
+<form action="{{ path('action') }}" method="post">
+    <input type="hidden" name="action" value="add">
+    <input type="text" name="name" placeholder="Введите имя ссылки">
+    <input type="url" name="url" placeholder="Введите сокращаемую ссылку">
+    <button type="submit">Добавить</button>
+</form>
