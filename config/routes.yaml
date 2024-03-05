@@ -4,17 +4,5 @@ controllers:
         namespace: App\Controller
     type: attribute
 
-home:
-    path: /
-    controller: App\Controller\HomeController::renderPage
-    methods: GET
-
-action:
-    path: /
-    controller: App\Controller\HomeController::modifyLinks
-    methods: POST
-
-redirect:
-    path: /{token}
-    controller: App\Controller\RedirectController::searchRedirect
-    methods: GET
+api_login_check:
+    path: /api/login_check

@@ -25,9 +25,24 @@ class Link
     #[ORM\Column(type: Types::DATETIME_MUTABLE)]
     private ?\DateTimeInterface $created = null;
 
+    #[ORM\Column(length: 255)]
+    private ?int $user_id = null;
+
     public function getId(): ?string
     {
         return $this->id;
+    }
+
+    public function getUserId(): ?string
+    {
+        return $this->user_id;
+    }
+
+    public function setUserId(int $iUserId): self
+    {
+        $this->user_id = $iUserId;
+
+        return $this;
     }
 
     public function getName(): ?string
