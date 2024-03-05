@@ -176,6 +176,10 @@ In `docker/` directory there is `post-build-*` and `pre-run-*` scripts that are 
     Runs before the container's CMD, but after the composer's post-install and post-autload-dump. Used for commands that needs to run at runtime before the application is started. Often are scripts that depends on other services or runtime parameters.
 
 3. `*-base` scripts run on both `production` and `development` images.
+4. Generate JWT keys (use .env [ JWT_PASSPHRASE ])
+   1. mkdir config/jwt
+   2. openssl genrsa -out config/jwt/private.pem -aes256 4096
+   3. openssl rsa -pubout -in config/jwt/private.pem -out config/jwt/public.pem
 --------
 
 # Misc Notes
